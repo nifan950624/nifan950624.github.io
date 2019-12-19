@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS基础知识点 | 倪凡的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="typeof操作符 “undefined”——如果这个值未定义; “boolean”——如果这个值是布尔值; “string”——如果这个值是字符串; “number”——如果这个值是数值; “object”——如果这个值是对象或 null; “function”——如果这个值是函数。   从技术角度讲，函数在 ECMAScript 中是对象，不是一种数据类型。然而，函数也 确实有一些特殊的属性，">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS基础知识点">
+<meta property="og:url" content="http://yoursite.com/2019/12/19/JavaScript重点/index.html">
+<meta property="og:site_name" content="倪凡的博客">
+<meta property="og:description" content="typeof操作符 “undefined”——如果这个值未定义; “boolean”——如果这个值是布尔值; “string”——如果这个值是字符串; “number”——如果这个值是数值; “object”——如果这个值是对象或 null; “function”——如果这个值是函数。   从技术角度讲，函数在 ECMAScript 中是对象，不是一种数据类型。然而，函数也 确实有一些特殊的属性，">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-19T08:28:47.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS基础知识点">
+<meta name="twitter:description" content="typeof操作符 “undefined”——如果这个值未定义; “boolean”——如果这个值是布尔值; “string”——如果这个值是字符串; “number”——如果这个值是数值; “object”——如果这个值是对象或 null; “function”——如果这个值是函数。   从技术角度讲，函数在 ECMAScript 中是对象，不是一种数据类型。然而，函数也 确实有一些特殊的属性，">
+  
+    <link rel="alternate" href="/atom.xml" title="倪凡的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倪凡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript重点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/19/JavaScript重点/" class="article-date">
+  <time datetime="2019-12-19T08:28:00.000Z" itemprop="datePublished">2019-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS基础知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h2><ul>
+<li>“undefined”——如果这个值未定义;</li>
+<li>“boolean”——如果这个值是布尔值;</li>
+<li>“string”——如果这个值是字符串;</li>
+<li>“number”——如果这个值是数值;</li>
+<li>“object”——如果这个值是对象或 null;</li>
+<li>“function”——如果这个值是函数。</li>
+</ul>
+<blockquote>
+<p>从技术角度讲，函数在 ECMAScript 中是对象，不是一种数据类型。然而，函数也 确实有一些特殊的属性，因此通过 typeof 操作符来区分函数和其他对象是有必要的</p>
+</blockquote>
+<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message; <span class="comment">// 这个变量声明之后默认取得了 undefined 值 // 下面这个变量并没有声明</span></span><br><span class="line"> <span class="comment">// var age</span></span><br><span class="line"></span><br><span class="line">alert(<span class="keyword">typeof</span> message);    <span class="comment">//undefined</span></span><br><span class="line">alert(<span class="keyword">typeof</span> age);   <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结果表明，对未初始化和未声明的变量执行 typeof 操作符都返回了 undefined 值;这个结果有 其逻辑上的合理性。因为虽然这两种变量从技术角度看有本质区别，但实际上无论对哪种变量也不可能 执行真正的操作。</p>
+</blockquote>
+<h2 id="数字范围"><a href="#数字范围" class="headerlink" title="数字范围"></a>数字范围</h2><p>由于内存的限制，ECMAScript 并不能保存世界上所有的数值。ECMAScript 能够表示的最小数值保 存在 Number.MIN_VALUE 中——在大多数浏览器中，这个值是 5e-324;能够表示的最大数值保存在 Number.MAX_VALUE 中——在大多数浏览器中，这个值是 1.7976931348623157e+308。如果某次计算的 结果得到了一个超出 JavaScript 数值范围的值，那么这个数值将被自动转换成特殊的 Infinity 值。具 体来说，如果这个数值是负数，则会被转换成-Infinity(负无穷)，如果这个数值是正数，则会被转 换成 Infinity(正无穷)。</p>
+<h2 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h2><p>NaN，即非数值(Not a Number)是一个特殊的数值，这个数值用于表示一个本来要返回数值的操作数<br>未返回数值的情况(这样就不会抛出错误了)。例如，在其他编程语言中，任何数值除以 0 都会导致错误， 从而停止代码执行。但在 ECMAScript 中，任何数值除以 0 会返回 NaN，因此不会影响其他代码的执行。<br>NaN 与任何值都不相等，包括 NaN 本身。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span> == <span class="literal">NaN</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>针对 NaN 的这两个特点，ECMAScript 定义了<code>isNaN()</code>函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="built_in">isNaN</span>(<span class="literal">NaN</span>));</span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="number">10</span>));</span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="string">"10"</span>));</span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="string">"blue"</span>));</span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>尽管有点儿不可思议，但<code>isNaN()</code>确实也适用于对象。在基于对象调用<code>isNaN()</code> 函数时，会首先调用对象的<code>valueOf()</code>方法，然后确定该方法返回的值是否可以转 换为数值。如果不能，则基于这个返回值再调用<code>toString()</code>方法，再测试返回值。 而这个过程也是 ECMAScript 中内置函数和操作符的一般执行流程，</p>
+</blockquote>
+<h2 id="数字转换"><a href="#数字转换" class="headerlink" title="数字转换"></a>数字转换</h2><p>有 3 个函数可以把非数值转换为数值:<code>Number()</code>、<code>parseInt()</code>和<code>parseFloat()</code>。第一个函数， 即转型函数<code>Number()</code>可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值。这 3 个 函数对于同样的输入会有返回不同的结果。</p>
+<p><code>Number()</code>函数的转换规则如下。</p>
+<ul>
+<li>如果是 Boolean 值，true 和 false 将分别被转换为 1 和 0。</li>
+<li>如果是数字值，只是简单的传入和返回。</li>
+<li>如果是 null 值，返回 0。</li>
+<li>如果是 undefined，返回 NaN。</li>
+<li>如果是字符串，遵循下列规则:<ul>
+<li>如果字符串中只包含数字(包括前面带正号或负号的情况)，则将其转换为十进制数值，即”1” 会变成 1，”123”会变成 123，而”011”会变成 11(注意:前导的零被忽略了);</li>
+<li>如果字符串中包含有效的浮点格式，如”1.1”，则将其转换为对应的浮点数值(同样，也会忽 略前导零);</li>
+<li>如果字符串中包含有效的十六进制格式，例如”0xf”，则将其转换为相同大小的十进制整 数值;</li>
+<li>如果字符串是空的(不包含任何字符)，则将其转换为 0;</li>
+<li>如果字符串中包含除上述格式之外的字符，则将其转换为 NaN。</li>
+</ul>
+</li>
+<li>如果是对象，则调用对象的 <code>valueOf()</code>方法，然后依照前面的规则转换返回的值。如果转换<br>的结果是 NaN，则调用对象的 <code>toString()</code>方法，然后再次依照前面的规则转换返回的字符<br>串值。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="built_in">Number</span>(<span class="literal">true</span>); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="built_in">Number</span>(<span class="string">"Hello world!"</span>); <span class="comment">//NaN</span></span><br><span class="line"><span class="keyword">var</span> num3 = <span class="built_in">Number</span>(<span class="string">""</span>); <span class="comment">//0</span></span><br><span class="line"><span class="keyword">var</span> num4 = <span class="built_in">Number</span>(<span class="string">"000011"</span>); <span class="comment">//11</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="字符字面量"><a href="#字符字面量" class="headerlink" title="字符字面量"></a>字符字面量</h2><table>
+<thead>
+<tr>
+<th>字面量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>空格</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>进纸</td>
+</tr>
+<tr>
+<td>这些字符字面量可以出现在字符串中的任意位置，而且也将被作为一个字符来解析，如下面的例子 所示:</td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"This is the : \t制表."</span>;</span><br></pre></td></tr></table></figure></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>Object 的每个实例都具有下列属性和方法。</p>
+<ul>
+<li><code>constructor</code>:保存着用于创建当前对象的函数。对于前面的例子而言，构造函数(<code>constructor</code>)就是<code>Object()</code>。</li>
+<li><code>hasOwnProperty(propertyName)</code>:用于检查给定的属性在当前对象实例中(而不是在实例 的原型中)是否存在。其中，作为参数的属性名(propertyName)必须以字符串形式指定(例如:<code>o.hasOwnProperty(&quot;name&quot;)</code>)。</li>
+<li><code>isPrototypeOf(object)</code>:用于检查传入的对象是否是传入对象的原型。</li>
+<li><code>propertyIsEnumerable(propertyName)</code>:用于检查给定的属性是否能够使用 for-in 语句来枚举。与<code>hasOwnProperty()</code>方法一样，作为参数的属性名必须以字符<br>串形式指定。</li>
+<li><code>toLocaleString()</code>:返回对象的字符串表示，该字符串与执行环境的地区对应。</li>
+<li><code>toString()</code>:返回对象的字符串表示。</li>
+<li><code>valueOf()</code>:返回对象的字符串、数值或布尔值表示。通常与<code>toString()</code>方法的返回值<br>相同。</li>
+</ul>
+<h2 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a>for-in语句</h2><p>建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined。</p>
+<h2 id="instanceof-操作符"><a href="#instanceof-操作符" class="headerlink" title="instanceof 操作符"></a>instanceof 操作符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = variable <span class="keyword">instanceof</span> <span class="keyword">constructor</span></span><br></pre></td></tr></table></figure>
+
+<p>如果变量是给定引用类型(根据它的原型链来识别);那么<br>instanceof 操作符就会返回 true。请看下面的例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(person instanceof Object);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用typeof操作符检测函数时，该操作符会返回”function”。在Safari 5及 之前版本和 Chrome 7 及之前版本中使用 typeof 检测正则表达式时，由于规范的原 因，这个操作符也返回”function”。ECMA-262 规定任何在内部实现[[Call]]方法 的对象都应该在应用 typeof 操作符时返回”function”。由于上述浏览器中的正则 表达式也实现了这个方法，因此对正则表达式应用 typeof 会返回”function”。在 IE 和 Firefox 中，对正则表达式应用 typeof 会返回”object”。</p>
+</blockquote>
+<h2 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h2><p>ECMAScript 5 新增了 <code>Array.isArray()</code>方法。这个方法的目的是最终确定某 个值到底是不是数组，而不管它是在哪个全局执行环境中创建的。这个方法的用法如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(value))&#123; </span><br><span class="line">  <span class="comment">//对数组执行某些操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>支持 <code>Array.isArray()</code>方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 10.5+和 Chrome。要<br>在尚未实现这个方法中的浏览器中准确检测数组，</p>
+<h2 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h2><blockquote>
+<p>如果数组中的某一项的值是 null 或者 undefined，那么该值在<code>join()</code>、<code>toLocaleString()</code>、<code>toString()</code>和<code>valueOf()</code>方法返回的结果中以空字符串表示。</p>
+</blockquote>
+<h2 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h2><p>后进先出，表现方法(<code>push</code>, <code>pop</code>)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> count = colors.push(<span class="string">"red"</span>, <span class="string">"green"</span>); <span class="comment">//向数组中推入两项</span></span><br><span class="line">alert(count); <span class="comment">//2</span></span><br><span class="line"></span><br><span class="line">count = colors.push(<span class="string">"black"</span>);</span><br><span class="line">alert(count);     <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">alert(item);      <span class="comment">//"black"</span></span><br><span class="line">alert(colors.length);   <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>简单理解就是有点像从羽毛球盒中取羽毛球，后进的最先拿出来。</p>
+</blockquote>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><ul>
+<li>先进先出, 表现方法(<code>pop</code>, <code>unshift</code>)</li>
+<li>先进先出, 表现方法(<code>shift</code>, <code>push</code>)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//创建一个数组</span></span><br><span class="line"><span class="keyword">var</span> count = colors.unshift(<span class="string">"red"</span>, <span class="string">"green"</span>); <span class="comment">//推入两项</span></span><br><span class="line"></span><br><span class="line">alert(count); <span class="comment">//2</span></span><br><span class="line">count = colors.unshift(<span class="string">"black"</span>);  <span class="comment">//向前推入一项</span></span><br><span class="line">alert(count);   <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> item = colors.pop();  <span class="comment">// 从后取出一项</span></span><br><span class="line"></span><br><span class="line">alert(item);    <span class="comment">//"green"</span></span><br><span class="line">alert(colors.length); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>这个例子创建了一个数组并使用 <code>unshift()</code>方法先后推入了 3 个值。首先是”red”和”green”，然 后是”black”，数组中各项的顺序为”black”、”red”、”green”。在调用 <code>pop()</code>方法时，移除并返回的是最后一项，即”green”。</p>
+<h2 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h2><p>数组中已经存在两个可以直接用来重排序的方法:<code>reverse()</code>和<code>sort()</code>。</p>
+<h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">values.reverse();</span><br><span class="line">alert(values); <span class="comment">//5,4,3,2,1</span></span><br></pre></td></tr></table></figure>
+
+<p>这里数组的初始值及顺序是 1、2、3、4、5。而调用数组的 reverse()方法后，其值的顺序变成了5、4、3、2、1。这个方法的作用相当直观明了，但不够灵活，因此才有了sort()方法。</p>
+<p>在默认情况下，<code>sort()</code>方法按升序排列数组项——即最小的值位于最前面，最大的值排在最后面。为了实现排序，<code>sort()</code>方法会调用每个数组项的<code>toString()</code>转型方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数值，<code>sort()</code>方法比较的也是字符串，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line"></span><br><span class="line">values.sort();</span><br><span class="line">alert(values);     <span class="comment">//0,1,10,15,5</span></span><br></pre></td></tr></table></figure>
+
+<p>因为<code>sort()</code>是按照字符编码排序的，所以直接使用它，是不准的，那么我们可以尝试使用它的参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (value1 &lt; value2) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value1 &gt; value2) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个比较函数可以适用于大多数数据类型，只要将其作为参数传递给 <code>sort()</code>方法即可，如下面这个例子所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line"></span><br><span class="line">values.sort(compare);</span><br><span class="line">alert(values); <span class="comment">//0,1,5,10,15</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>前小后大返回1为升序排序</p>
+</blockquote>
+<h2 id="slice方法"><a href="#slice方法" class="headerlink" title="slice方法"></a>slice方法</h2><p><code>slice()</code>方法不会影响原始数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> colors3 = colors.slice(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">alert(colors2);   <span class="comment">//green,blue,yellow,purple</span></span><br><span class="line">alert(colors3);   <span class="comment">//green,blue,yellow</span></span><br></pre></td></tr></table></figure>
+
+<p>这个代码中，开始定义的数组colors包含5项。调用<code>slice()</code>并传入1会得到一个包含4项的新数组;因为是从位置1开始复制，所以会包含”green”而不会包含”red”。这个新数组colors2中包含的是”green”、”blue”、”yellow”和”purple”。接着，我们再次调用<code>slice()</code>并传入了1和4，表示复制从位置1开始，到位置3(传入结束index - 1的位置)结束。结果数组colors3中包含了”green”、”blue”和”yellow”。</p>
+<p>那其实这个方法我String的substring是一样的作用，我们可以相互理解方便记忆.</p>
+<blockquote>
+<p>如果<code>slice()</code>方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置。例如，在一个包含5项的数组上调用slice(-2,-1)与调用slice(3,4)得到的结果相同。如果结束位置小于起始位置，则返回空数组。</p>
+</blockquote>
+<h2 id="splice-方法"><a href="#splice-方法" class="headerlink" title="splice()方法"></a>splice()方法</h2><p><code>splice()</code>方法，这个方法恐怕要算是最强大的数组方法了，它有很多种用法。<code>splice()</code>的主要用途是向数组的中部插入项，但使用这种方法的方式则有如下3种。</p>
+<ul>
+<li><p>删除: 可以删除任意数量的项，只需指定2个参数:要删除的第一项的位置和要删除的项数。例如，splice(0,2)会删除数组中的前两项。</p>
+</li>
+<li><p>插入:可以向指定位置插入任意数量的项，只需提供3个参数:起始位置、0 (要删除的项数)和要插入的项。如果要插入多个项，可以再传入第四、第五，以至任意多个项。例如，splice(2,0,”red”,”green”)会从当前数组的位置2开始插入字符串”red”和”green”。 </p>
+</li>
+<li><p>替换:可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数:起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如， splice (2,1,”red”,”green”)会删除当前数组位置 2 的项，然后再从位置 2 开始插入字符串 “red”和”green”。</p>
+</li>
+</ul>
+<p>splice()方法始终都会返回一个数组，该数组中包含从原始数组中删除的项(如果没有删除任何 项，则返回一个空数组)。下面的代码展示了上述 3 种使用 splice()方法的方式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> removed = colors.splice(<span class="number">0</span>,<span class="number">1</span>); </span><br><span class="line"></span><br><span class="line">alert(colors); <span class="comment">// green,blue </span></span><br><span class="line"></span><br><span class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"yellow"</span>, <span class="string">"orange"</span>); </span><br><span class="line">alert(colors);  <span class="comment">// green,yellow,orange,blue</span></span><br><span class="line"></span><br><span class="line">removed = colors.splice(<span class="number">1</span>, <span class="number">1</span>, red, purple);  </span><br><span class="line">alert(colors);  <span class="comment">// green,red,purple,orange,blue</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h2><p>ECMAScript 5 为数组实例添加了两个位置方法:<code>indexOf()</code>和 <code>lastIndexOf()</code>。这两个方法都接收 两个参数:要查找的项和(可选的)表示查找起点位置的索引。其中，<code>indexOf()</code>方法从数组的开头(位 置 0)开始向后查找，<code>lastIndexOf()</code>方法则从数组的末尾开始向前查找。</p>
+<p>这两个方法都返回要查找的项在数组中的位置，或者在没找到的情况下返回1。在比较第一个参数 与数组中的每一项时，会使用<strong>全等操作符</strong>;[也就是说，要求查找的项必须严格相等(就像使用===一样)]。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">alert(numbers.indexOf(<span class="number">4</span>));        <span class="comment">//3</span></span><br><span class="line">alert(numbers.lastIndexOf(<span class="number">4</span>)); <span class="comment">//5</span></span><br><span class="line">alert(numbers.indexOf(<span class="number">4</span>, <span class="number">4</span>));     <span class="comment">//5</span></span><br><span class="line">alert(numbers.lastIndexOf(<span class="number">4</span>, <span class="number">4</span>)); <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">"Nicholas"</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> people = [&#123; <span class="attr">name</span>: <span class="string">"Nicholas"</span> &#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> morePeople = [person];</span><br><span class="line"> </span><br><span class="line">alert(people.indexOf(person));     <span class="comment">//-1</span></span><br><span class="line">alert(morePeople.indexOf(person)); <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代方法-循环多对多"><a href="#迭代方法-循环多对多" class="headerlink" title="迭代方法(循环多对多)"></a>迭代方法(循环多对多)</h2><p>ECMAScript 5 为数组定义了 5 个迭代方法。每个方法都接收两个参数:要在每一项上运行的函数和 (可选的)运行该函数的作用域对象——影响 this 的值。传入这些方法中的函数会接收三个参数:数组项的值、该项在数组中的位置和数组对象本身。根据使用的方法不同，这个函数执行后的返回值可能会也可能不会影响方法的返回值。以下是这 5 个迭代方法的作用。</p>
+<ul>
+<li><code>every()</code>:对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。（理解成并且的含义）</li>
+<li><code>filter()</code>:对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。</li>
+<li><code>forEach()</code>:对数组中的每一项运行给定函数。这个方法没有返回值。</li>
+<li><code>map()</code>:对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</li>
+<li><code>some()</code>:对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true。（理解成或的含义）</li>
+</ul>
+<p>这些数组方法通过执行不同的操作，可以大大方便处理数组的任务。支持这些迭代方法的浏览器有 IE9+、Firefox 2+、Safari 3+、Opera 9.5+和 Chrome。</p>
+<h2 id="归并方法-循环多变1"><a href="#归并方法-循环多变1" class="headerlink" title="归并方法(循环多变1)"></a>归并方法(循环多变1)</h2><p>ECMAScript 5 还新增了两个归并数组的方法:<code>reduce()</code>和<code>reduceRight()</code>。这两个方法都会迭 代数组的所有项，然后构建一个最终返回的值。其中，<code>reduce()</code>方法从数组的第一项开始，逐个遍历 到最后。而<code>reduceRight()</code>则从数组的最后一项开始，向前遍历到第一项。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum = values.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, cur, index, array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> prev + cur;</span><br><span class="line">&#125;);</span><br><span class="line">alert(sum); <span class="comment">//15</span></span><br></pre></td></tr></table></figure>
+
+<p><code>reduceRight()</code>的作用类似，只不过方向相反而已。</p>
+<p>支持这两个归并函数的浏览器有 IE9+、Firefox 3+、Safari 4+、Opera 10.5 和 Chrome。</p>
+<h2 id="Date类型"><a href="#Date类型" class="headerlink" title="Date类型"></a>Date类型</h2><p>要创建一个日期对象，使用 new 操作符和 Date 构造函数即可，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>ECMAScript 提供了两个方法:<code>Date.parse()</code> 和 <code>Date.UTC()</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"May 25, 2004"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>直接将表 示日期的字符串传递给 Date 构造函数，也会在后台调用 <code>Date.parse()</code>。换句话说，下面的代码与前 面的例子是等价的:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"May 25, 2004"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码将会得到与前面相同的日期对象。</p>
+<p><code>Date.UTC()</code>方法同样也返回表示日期的毫秒数，但它与<code>Date.parse()</code>在构建值时使用不同的信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2005年5月5日下午5:55:55</span></span><br><span class="line"><span class="keyword">var</span> allFives = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2005</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">17</span>, <span class="number">55</span>, <span class="number">55</span>));</span><br></pre></td></tr></table></figure>
+
+<p>ECMAScript 5 添加 <code>Data.now()</code>方法，返回表示调用这个方法时的日期和时间的毫秒数。这个方 法简化了使用Data对象分析代码的工作。例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取得开始时间</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用函数 </span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得停止时间</span></span><br><span class="line"><span class="keyword">var</span> stop = <span class="built_in">Date</span>.now(),</span><br><span class="line">result = stop – start;</span><br></pre></td></tr></table></figure>
+
+<p>支持<code>Data.now()</code>方法的浏览器包括 IE9+、Firefox 3+、Safari 3+、Opera 10.5 和 Chrome。在不支持它的浏览器中，使用+操作符把 Data 对象转换成字符串，也可以达到同样的目的。</p>
+<h3 id="日期格式化方法"><a href="#日期格式化方法" class="headerlink" title="日期格式化方法"></a>日期格式化方法</h3><p>Date 类型还有一些专门用于将日期格式化为字符串的方法，这些方法如下。</p>
+<ul>
+<li><code>toDateString()</code>以特定于实现的格式显示星期几、月、日和年;</li>
+<li><code>toTimeString()</code>以特定于实现的格式显示时、分、秒和时区;</li>
+<li><code>toLocaleDateString()</code>以特定于地区的格式显示星期几、月、日和年;</li>
+<li><code>toLocaleTimeString()</code>以特定于实现的格式显示时、分、秒;</li>
+<li><code>toUTCString()</code>以特定于实现的格式完整的 UTC 日期</li>
+<li><code>toLocaleString()</code>和 <code>toString()</code>方法一样，以上这些字符串格式方法的输出也是因浏览器 而异的，因此没有哪一个方法能够用来在用户界面中显示一致的日期信息。</li>
+</ul>
+<h2 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h2><p>模式中使用的所有元字符都必须转义。正则表达式中的元字符包括: <code>( [ { \ ^ $ | ) ? * + .]}</code></p>
+<h2 id="Function类型"><a href="#Function类型" class="headerlink" title="Function类型"></a>Function类型</h2><p>函数实际上是对象。每个函数都是Function类型的实例，而且都与其他引用类型一样具有属性和方法。由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。函数通常是使用函数声明语法定义的，如下面的例子所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这与下面使用函数表达式定义函数的方式几乎相差无几。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最后一种定义函数的方式是使用 Function 构造函数。Function 构造函数可以接收任意数量的参数， 但最后一个参数始终都被看成是函数体，而前面的参数则枚举出了新函数的参数。来看下面的例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></span><br></pre></td></tr></table></figure>
+
+<p>这种语法对于理解“函数是对象，函数名是指针”的概念倒是非常直观的。</p>
+<p>由于函数名仅仅是指向函数的指针，因此函数名与包含对象指针的其他变量没有什么不同。换句话说，一个函数可能会有多个名字，如下面的例子所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));        <span class="comment">//20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> anotherSum = sum;</span><br><span class="line"></span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line"></span><br><span class="line">sum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码首先定义了一个名为<code>sum()</code>的函数，用于求两个值的和。然后，又声明了变量anotherSum，并将其设置为与sum相等(将sum的值赋给anotherSum)。注意，使用不带圆括号的函数名是访问函数指针，而非调用函数。此时，anotherSum和sum就都指向了同一个函数，因此<code>anotherSum()</code>也可以被调用并返回结果。即使将sum设置为null，让它与函数“断绝关系”，但仍然可以正常调用<code>anotherSum()</code>(这里要注意和对象是有区别的)。</p>
+<h3 id="函数声明与函数表达式"><a href="#函数声明与函数表达式" class="headerlink" title="函数声明与函数表达式"></a>函数声明与函数表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码完全可以正常运行。因为在代码开始执行之前，解析器就已经通过一个名为函数声明提升(function declaration hoisting)的过程，读取并将函数声明添加到执行环境中。对代码求值时，JavaScript 引擎在第一遍会声明函数并将它们放到源代码树的顶部。所以，即使声明函数的代码在调用它的代码后 面，JavaScript 引擎也能把函数声明提升到顶部。如果像下面例子所示的，把上面的函数声明改为等价的函数表达式，就会在执行期间导致错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码之所以会在运行期间产生错误，原因在于函数位于一个初始化语句中，而不是一个函数声 明。换句话说，在执行到函数所在的语句之前，变量 sum 中不会保存有对函数的引用;而且，由于第一 行代码就会导致“unexpected identifier”(意外标识符)错误，实际上也不会执行到下一行。除了什么时候可以通过变量访问函数这一点区别之外，函数声明与函数表达式的语法其实是等价的。</p>
+<blockquote>
+<p>也可以同时使用函数声明和函数表达式，例如<code>var sum = function sum(){}</code>。 不过，这种语法在 Safari 中会导致错误。</p>
+</blockquote>
+<h3 id="函数的解耦"><a href="#函数的解耦" class="headerlink" title="函数的解耦"></a>函数的解耦</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> num * factorial(num<span class="number">-1</span>)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义阶乘函数一般都要用到递归算法;如上面的代码所示，在函数有名字，而且名字以后也不会变 的情况下，这样定义没有问题。但问题是这个函数的执行与函数名 factorial 紧紧耦合在了一起。为 了消除这种紧密耦合的现象，可以像下面这样使用 arguments.callee。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt;=<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个重写后的 factorial()函数的函数体内，没有再引用函数名 factorial。这样，无论引用 函数时使用的是什么名字，都可以保证正常完成递归调用。</p>
+<p>函数内部的另一个特殊对象是 this，其行为与 Java 和 C#中的 this 大致类似。换句话说，this引用的是函数据以执行的环境对象——或者也可以说是this值(当在网页的全局作用域中调用函数时，this对象引用的就是window)。来看下面的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">color</span>: <span class="string">"blue"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.color);</span><br><span class="line">&#125;</span><br><span class="line">sayColor();     <span class="comment">//"red"</span></span><br><span class="line">o.sayColor = sayColor;</span><br><span class="line">o.sayColor();   <span class="comment">//"blue"</span></span><br></pre></td></tr></table></figure>
+
+<p> 上面这个函数<code>sayColor()</code>是在全局作用域中定义的，它引用了 this 对象。由于在调用函数之前， this 的值并不确定，因此 this 可能会在代码执行过程中引用不同的对象。当在全局作用域中调用<code>sayColor()</code>时，this 引用的是全局对象 window;换句话说，对 this.color 求值会转换成对 window.color 求值，于是结果就返回了”red”。而当把这个函数赋给对象 o 并调用<code>o.sayColor()</code>时，this 引用的是对象 o，因此对 this.color 求值会转换成对 o.color 求值，结果就返回了”blue”。</p>
+<blockquote>
+<p> 一定要记住,函数的名字仅仅是一个包含指针的变量而已。因此，即使是在不同的环境中执行，全局的<code>sayColor()</code>函数与<code>o.sayColor()</code>指向的仍然是同一个函数</p>
+</blockquote>
+<h2 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h2><p>ECMAScript 中的函数是对象，因此函数也有属性和方法。每个函数都包含两个 属性:length 和 prototype。其中，length属性表示函数希望接收的命名参数的个数，如下面的例子所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"hi"</span>);</span><br><span class="line">&#125;</span><br><span class="line">alert(sayName.length);      <span class="comment">//1</span></span><br><span class="line">alert(sum.length);          <span class="comment">//2</span></span><br><span class="line">alert(sayHi.length);        <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+
+<p>每个函数都包含两个非继承而来的方法:<code>apply()</code>和<code>call()</code>。这两个方法的用途都是在特定的作用域中调用函数，实际上等于设置函数体内this对象的值。首先，apply()方法接收两个参数:一个是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是Array的实例，也可以是arguments对象。例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum1</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);    <span class="comment">// 传入 arguments 对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSum2</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sum.apply(<span class="keyword">this</span>, [num1, num2]);    <span class="comment">// 传入数组</span></span><br><span class="line">&#125;</span><br><span class="line">alert(callSum1(<span class="number">10</span>,<span class="number">10</span>));   <span class="comment">//20</span></span><br><span class="line">alert(callSum2(<span class="number">10</span>,<span class="number">10</span>));   <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面这个例子中，<code>callSum1()</code>在执行<code>sum()</code>函数时传入了 this 作为 this 值(因为是在全局 作用域中调用的，所以传入的就是 window 对象)和 arguments 对象。而 callSum2 同样也调用了<code>sum()</code>函数，但它传入的则是 this 和一个参数数组。这两个函数都会正常执行并返回正确的结果。</p>
+<blockquote>
+<p> 在严格模式下，未指定环境对象而调用函数，则 this 值不会转型为 window。 除非明确把函数添加到某个对象或者调用<code>apply()</code>或<code>call()</code>，否则this值将是undefined</p>
+</blockquote>
+<p><code>call()</code>方法与<code>apply()</code>方法的作用相同，它们的区别仅在于接收参数的方式不同。</p>
+<p>在使用<code>call()</code>方法的情况下，<code>callSum()</code>必须明确地传入每一个参数。如果你打算直接传入 arguments 对象，或者包含函数中先接收到的也是一个数组，那么使用<code>apply()</code>肯定更方便;否则，选择<code>call()</code>可能更合适。(在不给函数传递参数的情况下，使用哪个方法都无所 谓。)</p>
+<p>递参数并非<code>apply()</code>和<code>call()</code>真正的用武之地;它们真正强大的地方是能够扩充函数赖以运行的作用域。下面来看一个例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">color</span>: <span class="string">"blue"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.color);</span><br><span class="line">&#125;</span><br><span class="line">saycolor();             <span class="comment">//red</span></span><br><span class="line">saycolor.call(<span class="keyword">this</span>);    <span class="comment">//red</span></span><br><span class="line">saycolor.call(<span class="built_in">window</span>);  <span class="comment">//red</span></span><br><span class="line">saycolor.call(o);       <span class="comment">//blue</span></span><br></pre></td></tr></table></figure>
+
+
+<p>ECMAScript 5 还定义了一个方法:<code>bind()</code>。这个方法会创建一个函数的实例，其this值会被绑 定到传给<code>bind()</code>函数的值。例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">color</span>: <span class="string">"blue"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> objectSayColor = sayColor.bind(o);</span><br><span class="line">objectSayColor();    <span class="comment">//blue</span></span><br></pre></td></tr></table></figure>
+
+<p>支持<code>bind()</code>方法的浏览器有IE9+、Firefox4+、Safari 5.1+、Opera12+和Chrome。</p>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><p><code>min()</code>和<code>max()</code>方法用于确定一组数值中的最小值和最大值。这两个方法都可以接收任意多个数值参数，如下面的例子所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max(<span class="number">3</span>, <span class="number">54</span>, <span class="number">32</span>, <span class="number">16</span>);</span><br><span class="line">alert(max);    <span class="comment">//54</span></span><br><span class="line"><span class="keyword">var</span> min = <span class="built_in">Math</span>.min(<span class="number">3</span>, <span class="number">54</span>, <span class="number">32</span>, <span class="number">16</span>);</span><br><span class="line">alert(min);    <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要在数组找到最大值或者最小值，我们可以使用<code>apply()</code>方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, values);</span><br></pre></td></tr></table></figure>
+
+<p>这个技巧的关键是把Math对象作为<code>apply()</code>的第一个参数，从而正确地设置this值。然后，可以将任何数组作为第二个参数。</p>
+<p>下面来介绍将小数值舍入为整数的几个方法:<code>Math.ceil()</code>、<code>Math.floor()</code>和<code>Math.round()</code>。 这三个方法分别遵循下列舍入规则:</p>
+<ul>
+<li><code>Math.ceil()</code>执行向上舍入，即它总是将数值向上舍入为最接近的整数;</li>
+<li><code>Math.floor()</code>执行向下舍入，即它总是将数值向下舍入为最接近的整数;</li>
+<li><code>Math.round()</code>执行标准舍入，即它总是将数值四舍五入为最接近的整数(这也是我们在数学课<br>上学到的舍入规则)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="built_in">Math</span>.ceil(<span class="number">25.9</span>));     <span class="comment">//26</span></span><br><span class="line">alert(<span class="built_in">Math</span>.ceil(<span class="number">25.5</span>));     <span class="comment">//26</span></span><br><span class="line">alert(<span class="built_in">Math</span>.ceil(<span class="number">25.1</span>));     <span class="comment">//26</span></span><br><span class="line">alert(<span class="built_in">Math</span>.round(<span class="number">25.9</span>));    <span class="comment">//26</span></span><br><span class="line">alert(<span class="built_in">Math</span>.round(<span class="number">25.5</span>));    <span class="comment">//26</span></span><br><span class="line">alert(<span class="built_in">Math</span>.round(<span class="number">25.1</span>));    <span class="comment">//25</span></span><br><span class="line">alert(<span class="built_in">Math</span>.floor(<span class="number">25.9</span>));    <span class="comment">//25</span></span><br><span class="line">alert(<span class="built_in">Math</span>.floor(<span class="number">25.5</span>));    <span class="comment">//25</span></span><br><span class="line">alert(<span class="built_in">Math</span>.floor(<span class="number">25.1</span>));    <span class="comment">//25</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="random-方法"><a href="#random-方法" class="headerlink" title="random()方法"></a>random()方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">值 = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * 可能值的总数 + 第一个可能的值)</span><br></pre></td></tr></table></figure>
+
+<p>可以通过一个函数来计算可能值的总数和第一个可能的值:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span>(<span class="params">lowerValue, upperValue</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * choices + lowerValue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = selectFrom(<span class="number">2</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">alert(num); <span class="comment">// 介于2和10之间(包括2和10)的一个数值</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/19/JavaScript重点/" data-id="ck4cgnv57000sjag44mcfmpof" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/09/Node-js笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Node.js笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/JavaScript重点/">JS基础知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/09/Node-js笔记/">Node.js笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/08/mpvue使用Vuex/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/CSS实现图片自适应/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/03/Taro实现echarts点击获取动态数据/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 lemon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
