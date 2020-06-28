@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>倪凡的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这段时间，一直在学习些源码，想了解下大佬的思路，看完后，只能说卧槽，还有这种操作。 element-ui一个Vue常用的组件库，包含很多的知识点可以学习，其很多组件只是样式的变化，其中难度比较大的,轮播算一个。今天就给大家简单实现下它的一系列操作。 首先它分为两个组件，一个是父组件（容器），另一个是子组件（幻灯片），首先容器是固定一个窗口，让对应的幻灯片显示。  我们先来写好它的模版。  父组件1">
+<meta name="keywords" content="前端博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="倪凡的博客">
+<meta property="og:url" content="http://yoursite.com/2020/06/28/element轮播的实现/index.html">
+<meta property="og:site_name" content="倪凡的博客">
+<meta property="og:description" content="这段时间，一直在学习些源码，想了解下大佬的思路，看完后，只能说卧槽，还有这种操作。 element-ui一个Vue常用的组件库，包含很多的知识点可以学习，其很多组件只是样式的变化，其中难度比较大的,轮播算一个。今天就给大家简单实现下它的一系列操作。 首先它分为两个组件，一个是父组件（容器），另一个是子组件（幻灯片），首先容器是固定一个窗口，让对应的幻灯片显示。  我们先来写好它的模版。  父组件1">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933081568634.jpg">
+<meta property="og:image" content="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933112834110.jpg">
+<meta property="og:image" content="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933112552500.jpg">
+<meta property="og:updated_time" content="2020-06-28T02:44:24.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="倪凡的博客">
+<meta name="twitter:description" content="这段时间，一直在学习些源码，想了解下大佬的思路，看完后，只能说卧槽，还有这种操作。 element-ui一个Vue常用的组件库，包含很多的知识点可以学习，其很多组件只是样式的变化，其中难度比较大的,轮播算一个。今天就给大家简单实现下它的一系列操作。 首先它分为两个组件，一个是父组件（容器），另一个是子组件（幻灯片），首先容器是固定一个窗口，让对应的幻灯片显示。  我们先来写好它的模版。  父组件1">
+<meta name="twitter:image" content="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933081568634.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="倪凡的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">倪凡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-element轮播的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/28/element轮播的实现/" class="article-date">
+  <time datetime="2020-06-28T01:24:56.713Z" itemprop="datePublished">2020-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这段时间，一直在学习些源码，想了解下大佬的思路，看完后，只能说卧槽，还有这种操作。</p>
+<p><strong>element-ui</strong>一个Vue常用的组件库，包含很多的知识点可以学习，其很多组件只是样式的变化，其中难度比较大的,轮播算一个。今天就给大家简单实现下它的一系列操作。</p>
+<p>首先它分为两个组件，一个是父组件（容器），另一个是子组件（幻灯片），首先容器是固定一个窗口，让对应的幻灯片显示。</p>
+<blockquote>
+<p>我们先来写好它的模版。</p>
+</blockquote>
+<h3 id="父组件"><a href="#父组件" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;n-slide&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;n-slide-container&quot; :style=&quot;&#123;height: height&#125;&quot;&gt;</span><br><span class="line">      &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.n-slide-container</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="子组件"><a href="#子组件" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div v-show=&quot;ready&quot; :class=&quot;[&apos;n-slide-item&apos;,&#123;animating&#125;]&quot; :style=&quot;translateStyle&quot;&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.n-slide-item</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    &amp;<span class="selector-class">.animating</span> &#123;</span><br><span class="line">      <span class="attribute">transition</span>: transform <span class="number">0.4s</span> ease-in-out;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>容器样式参数，只接受一个高度，宽度是自适应的。</p>
+<p><img src="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933081568634.jpg" alt></p>
+<p>这是文档上记录的可传递的参数。</p>
+<blockquote>
+<p>下面我们按照，这些传递的参数简单实现下它的功能。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">'Slide'</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">      loop: &#123;</span><br><span class="line">        type: <span class="built_in">Boolean</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      autoplay: &#123;</span><br><span class="line">        type: <span class="built_in">Boolean</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      height: <span class="built_in">String</span>,</span><br><span class="line">      interval: &#123;</span><br><span class="line">        type: <span class="built_in">Number</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">3000</span></span><br><span class="line">      &#125;,</span><br><span class="line">      initialIndex: &#123;</span><br><span class="line">        type: <span class="built_in">Number</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>暂时，我们就只需要这些。实现一下自动滚动的功能。</p>
+<blockquote>
+<p>首先我们需要加载幻灯片，看看有多少个：</p>
+</blockquote>
+<h3 id="父组件-1"><a href="#父组件-1" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    items: [],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  upDataItems() &#123;</span><br><span class="line">        <span class="keyword">this</span>.items = <span class="keyword">this</span>.$children.filter(<span class="function"><span class="params">child</span> =&gt;</span> child.$options.name === <span class="string">'NSlideItem'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="子组件-1"><a href="#子组件-1" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">     <span class="keyword">this</span>.$parent &amp;&amp; <span class="keyword">this</span>.$parent.upDataItems()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里加载幻灯片是通过，子组件的<code>created</code>函数调用父组件的<code>upDataItems</code>函数实现的。</p>
+<p>这里如果不懂的同学，可以好好了解下Vue的生命周期，当父组件和子组件在一起时，生命周期是怎样的运作过程。就不详细阐述了。</p>
+<p>加载完后，我们需要让轮播滚动起来。</p>
+<h3 id="父组件-2"><a href="#父组件-2" class="headerlink" title="父组件"></a>父组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">       <span class="comment">// 为了确保幻灯片加载完</span></span><br><span class="line">   <span class="keyword">this</span>.upDataItems()</span><br><span class="line">   <span class="comment">// $nextTick是把执行逻辑放入Vue的异步队列中，等Vue的事件初始化完成后才会执行，为了正确的给activeIndex赋值，否则初始化轮播为最后一张</span></span><br><span class="line">   <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">this</span>.initialIndex &lt; <span class="keyword">this</span>.items.length &amp;&amp; <span class="keyword">this</span>.initialIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">this</span>.activeIndex = <span class="keyword">this</span>.initialIndex;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 打开定时器</span></span><br><span class="line">       <span class="keyword">this</span>.startTimer();</span><br><span class="line">     &#125;);</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  items: [],</span><br><span class="line">  timer: <span class="literal">null</span>,</span><br><span class="line">  initIndex: <span class="number">0</span>, <span class="comment">// 初始的index</span></span><br><span class="line">  activeIndex: <span class="number">-1</span> <span class="comment">// 滚动的index</span></span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    startTimer() &#123;</span><br><span class="line">        <span class="keyword">this</span>.timer = setInterval(<span class="keyword">this</span>.playSlides, <span class="keyword">this</span>.interval)</span><br><span class="line">    &#125;,</span><br><span class="line">    playSlides() &#123;</span><br><span class="line">        <span class="keyword">const</span> items = <span class="keyword">this</span>.items</span><br><span class="line">        <span class="comment">// 轮播滚动到最后一个就循环</span></span><br><span class="line">        <span class="keyword">if</span> (items.length &amp;&amp; <span class="keyword">this</span>.activeIndex &lt; items.length - <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>.activeIndex++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.loop) &#123;</span><br><span class="line">          <span class="keyword">this</span>.activeIndex = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"> mounted() &#123;</span><br><span class="line">    <span class="comment">// 为了确保幻灯片加载完</span></span><br><span class="line">     <span class="keyword">this</span>.upDataItems()</span><br><span class="line">        </span><br><span class="line">     <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.initialIndex &lt; <span class="keyword">this</span>.items.length &amp;&amp; <span class="keyword">this</span>.initialIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">this</span>.activeIndex = <span class="keyword">this</span>.initialIndex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 打开定时器</span></span><br><span class="line">        <span class="keyword">this</span>.startTimer();</span><br><span class="line">      &#125;);</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这样在一加载完组件后，<code>activeIndex</code>开始递增，到了最后一个就重复，下面需要一个监听器，监听<code>activeIndex</code>的变化，然后去执行页面视图的变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">   autoplay(val) &#123;</span><br><span class="line">       <span class="keyword">if</span> (val) &#123;</span><br><span class="line">         <span class="keyword">this</span>.startTimer()</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   activeIndex(activeIndex, oldIndex) &#123;</span><br><span class="line">   <span class="comment">// 重新更新幻灯片的位置(主要函数)</span></span><br><span class="line">    <span class="keyword">this</span>.resetPositionItems(activeIndex, oldIndex)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    resetPositionItems(activeIndex, oldIndex) &#123;</span><br><span class="line">       <span class="keyword">this</span>.items.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">         item.initTranslate(index, activeIndex, oldIndex)</span><br><span class="line">      &#125;)</span><br><span class="line">   &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="子组件-2"><a href="#子组件-2" class="headerlink" title="子组件"></a>子组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">name: <span class="string">'NSlideItem'</span>,</span><br><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    translate: <span class="number">0</span>,</span><br><span class="line">    ready: <span class="literal">false</span>,</span><br><span class="line">    animating: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line"><span class="comment">// 处理循环轮播</span></span><br><span class="line">  processIndex(index, activeIndex, length) &#123;</span><br><span class="line">    <span class="comment">// 如果是最后一张都第一张</span></span><br><span class="line">    <span class="keyword">if</span> (activeIndex === <span class="number">0</span> &amp;&amp; index === length - <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">      <span class="comment">// 如果是第一张到对后一张</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (activeIndex === length - <span class="number">1</span> &amp;&amp; index === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> length;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &lt; activeIndex - <span class="number">1</span> &amp;&amp; activeIndex - index &gt;= length / <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> length + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &gt; activeIndex + <span class="number">1</span> &amp;&amp; index - activeIndex &gt;= length / <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">  &#125;,</span><br><span class="line">  initTranslate(index, activeIndex, oldIndex) &#123;</span><br><span class="line">        <span class="keyword">const</span> length = <span class="keyword">this</span>.$parent.items.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (index !== activeIndex &amp;&amp; length &gt; <span class="number">2</span> &amp;&amp; <span class="keyword">this</span>.$parent.loop) &#123;</span><br><span class="line">          index = <span class="keyword">this</span>.processIndex(index, activeIndex, length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.animating = activeIndex === index</span><br><span class="line">        <span class="keyword">this</span>.translate = <span class="keyword">this</span>.calcTranslate(index, activeIndex)</span><br><span class="line">        <span class="comment">// 组件初始化完</span></span><br><span class="line">        <span class="keyword">this</span>.ready = <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">  <span class="comment">// 计算位移的距离，重点就是这个函数</span></span><br><span class="line">  calcTranslate(index, activeIndex) &#123;</span><br><span class="line">    <span class="comment">// 获取父组件的宽度</span></span><br><span class="line">    <span class="keyword">const</span> distance = <span class="keyword">this</span>.$parent.$el.offsetWidth</span><br><span class="line">    <span class="comment">// 可以仔细思考下这个计算</span></span><br><span class="line">    <span class="keyword">return</span> distance * (index - activeIndex)</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  translateStyle() &#123;</span><br><span class="line">  <span class="comment">// this.translate变化时,返回对应的style</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      transform: <span class="string">`translateX(<span class="subst">$&#123;<span class="keyword">this</span>.translate&#125;</span>px)`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">created() &#123;</span><br><span class="line">  <span class="keyword">this</span>.$parent &amp;&amp; <span class="keyword">this</span>.$parent.upDataItems()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样轮播就实现了。测试一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div style=&quot;width: 500px&quot;&gt;</span><br><span class="line">    &lt;n-slide height=&quot;400px&quot;&gt;</span><br><span class="line">      &lt;n-slide-item v-for=&quot;(item,index) of [&apos;red&apos;,&apos;grey&apos;,&apos;black&apos;,&apos;orange&apos;]&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;item&quot; :style=&quot;&#123;height: &apos;100%&apos;,background: item,color: &apos;#ffffff&apos;,fontSize: &apos;30px&apos;&#125;&quot;&gt;</span><br><span class="line">          &#123;&#123;index+1&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/n-slide-item&gt;</span><br><span class="line">    &lt;/n-slide&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933112834110.jpg" alt></p>
+<p><img src="http://qc5rxy3s4.bkt.clouddn.com/mweb/15933112552500.jpg" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/28/element轮播的实现/" data-id="ckbyiie0t00096zg4fq6r51nw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/12/Typescript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/微信小程序/" style="font-size: 15px;">微信小程序</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/28/element轮播的实现/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/Typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/30/JavaSript中的函数/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/27/面向JavaScript高级/">理解对象</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/JavaScript重点/">JS基础知识点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 lemon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

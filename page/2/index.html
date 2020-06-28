@@ -66,6 +66,196 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-async和await的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/08/async和await的使用/" class="article-date">
+  <time datetime="2019-10-08T13:00:00.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/async和await的使用/">async和await的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>async</strong>和<strong>await</strong>一直是ES6中的一个重点，其实它也是为了处理异步操作而出现的，内部就是Promise，但是它在结构上看起来比Promise更加简单，简单到看起来就像同步，首先看看Promise代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str) &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="string">"success"</span>)</span><br><span class="line">      &#125;, <span class="number">2000</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      reject(<span class="string">"fail"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">get</span>("hello").then(res =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这是一个Promise的异步操作，如果这个代码用aysnc来写，看看是什么样子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">str</span>)  </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str ? <span class="keyword">await</span> handleSuccess() : <span class="string">"fail"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">handleSuccess</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="string">"success"</span>)</span><br><span class="line">      &#125;, <span class="number">2000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">get</span>("hello").then(res =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>首先我们可以看到声明函数，我们加了一个aysnc的关键字，这个是声明异步函数，然后await后面接一个Promise，然后我们在aysnc函数体中就可以像同步一样使用变量，看起来特别简单清爽，</p>
+</blockquote>
+<p><img src="http://pxp4jq1w8.bkt.clouddn.com/mweb/15705444269765.jpg" alt></p>
+<p>这样看起来是不是非常棒，简洁的函数体，让我们轻松明白自己接下来的目的,真是因为await的作用，任何的异步都可以使用这种方法来让我们的代码易读、好理解(ajax中使用会有非常棒的效果)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/08/async和await的使用/" data-id="ckbyiie0q00056zg4mhn3pow4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自己动手封装一个Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/28/自己动手封装一个Promise/" class="article-date">
+  <time datetime="2019-09-28T13:08:22.000Z" itemprop="datePublished">2019-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/28/自己动手封装一个Promise/">自己动手封装一个Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Promise是我们在js中经常用到的一个对象，它为我们解决异步问题，让我们本来复杂的回调罗列变成只需要.then就可以实现，在封装之前，我们先new Promise：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    res(<span class="string">"success"</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    rej(<span class="string">"fail"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这是我们经常用到的方式，自己定义一个promise然后使用,那我们需要考虑2个点</p>
+<ol>
+<li>res和rej都是一个函数</li>
+<li>假入我们在使用then时，怎么才能拿到上面两个函数的返回值</li>
+</ol>
+<p>都想明白的话，我们就能实现了：</p>
+<blockquote>
+<p>首先,我们要确定两个函数</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 fail对应rej()传递的参数</span></span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那其实我们可以拿两个变量分别把这两个返回值存储下来，方便then来使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.success = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.fail = <span class="literal">null</span></span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 success对应rej()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.fail = fail</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那其实我们到这里就把核心问题解决了，获取到了值，接下来再来写then方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.success = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.fail = <span class="literal">null</span></span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 success对应rej()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.fail = fail</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  then(success, fail) &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>定义出来，但是有个问题，怎么判断它到底成功还是失败呢，那就还需要一个变量:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.msg = <span class="string">""</span></span><br><span class="line">    <span class="keyword">this</span>.success = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.fail = <span class="literal">null</span></span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"SUCCESS"</span></span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 success对应rej()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"FAIL"</span></span><br><span class="line">        <span class="keyword">this</span>.fail = fail</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  then(success, fail) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"SUCCESS"</span>) &#123;</span><br><span class="line">      success(<span class="keyword">this</span>.success)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"FAIL"</span>) &#123;</span><br><span class="line">      fail(<span class="keyword">this</span>.fail)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的话，我们的代码就写完了?下面来测试下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> myPromise(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">  res(<span class="string">"hello"</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://pxp4jq1w8.bkt.clouddn.com/mweb/15696796779093.jpg" alt><br>但是，是真的完成了?再测试一个</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> myPromise(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res(<span class="string">"gja"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  setTimeout(fn, <span class="number">1000</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://pxp4jq1w8.bkt.clouddn.com/mweb/15696797841579.jpg" alt><br>然而结果并没出来，因为这时.then提前就执行了，所以我们还需要加入异步操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.msg = <span class="string">""</span></span><br><span class="line">    <span class="keyword">this</span>.success = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.fail = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.queue = []</span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"SUCCESS"</span></span><br><span class="line">        <span class="keyword">this</span>.queue.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          item.res(success)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 success对应rej()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.fail = fail</span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"FAIL"</span></span><br><span class="line">        <span class="keyword">this</span>.queue.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          item.rej(success)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  then(success, fail) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"SUCCESS"</span>) &#123;</span><br><span class="line">      success(<span class="keyword">this</span>.success)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"FAIL"</span>) &#123;</span><br><span class="line">      fail(<span class="keyword">this</span>.fail)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//如果是异步就先站队</span></span><br><span class="line">      <span class="keyword">this</span>.queue.push(&#123;</span><br><span class="line">        res: success,</span><br><span class="line">        rej: fail</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> myPromise(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res(<span class="string">"gja"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  setTimeout(fn, <span class="number">1000</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>没问题，异步我们也实现了，但是在Promise中最出名还是它的链式操作，例如这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res,rej</span>)=&gt;</span> &#123;</span><br><span class="line">    res(<span class="string">'成功'</span>)</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//'成功'</span></span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<p>那我们只要想到返回什么才能再then，怎么样才能把上一个函数then的返回值，放到下个then</p>
+<ol>
+<li>我们需要每次then后返回还是一个Promise才行</li>
+<li>我们需要把第一个函数的return的值，放到第二then中</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.msg = <span class="string">""</span></span><br><span class="line">    <span class="keyword">this</span>.success = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.fail = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.queue = []</span><br><span class="line">    <span class="comment">//这个callback也就是我们传递的函数</span></span><br><span class="line">    callback(</span><br><span class="line">      success =&gt; &#123;</span><br><span class="line">        <span class="comment">// 成功 success对应res()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"SUCCESS"</span></span><br><span class="line">        <span class="keyword">this</span>.queue.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          item.res(success)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail =&gt; &#123;</span><br><span class="line">        <span class="comment">// 失败 success对应rej()传递的参数</span></span><br><span class="line">        <span class="keyword">this</span>.fail = fail</span><br><span class="line">        <span class="keyword">this</span>.msg = <span class="string">"FAIL"</span></span><br><span class="line">        <span class="keyword">this</span>.queue.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">          item.rej(success)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  then(fullFn, fail) &#123;</span><br><span class="line">    <span class="comment">// 每使用一个then，就再递归生成一个对象,接受上个then的参数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> myPromise(<span class="function">(<span class="params">resFn, rejFn</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"SUCCESS"</span>) &#123;</span><br><span class="line">        handle(<span class="keyword">this</span>.success)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.msg === <span class="string">"FAIL"</span>) &#123;</span><br><span class="line">        <span class="comment">//如果失败直接导出</span></span><br><span class="line">        fail(<span class="keyword">this</span>.fail)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.queue.push(&#123;</span><br><span class="line">          res: success,</span><br><span class="line">          rej: fail</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// value为reslove的值（需要传给第一个then的值并传递过去）</span></span><br><span class="line">        <span class="keyword">let</span> reaValue = (fullFn <span class="keyword">instanceof</span> <span class="built_in">Function</span> &amp;&amp; success(value)) || value</span><br><span class="line">        <span class="comment">// 如果返回值的是一个promise对象</span></span><br><span class="line">        <span class="keyword">if</span> (reaValue &amp;&amp; reaValue.then <span class="keyword">instanceof</span> <span class="built_in">Function</span>) &#123;</span><br><span class="line">          reaValue.then(</span><br><span class="line">            res =&gt; &#123;</span><br><span class="line">              resFn(res) <span class="comment">//把值存到新的this.success中，等下一次then调用</span></span><br><span class="line">            &#125;,</span><br><span class="line">            fail =&gt; &#123;</span><br><span class="line">              rejFn(fail) <span class="comment">//把错误存到新的this.fail中(只要上次不是promise对象就不能then了)</span></span><br><span class="line">            &#125;</span><br><span class="line">          )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//其他的值就直接存进下一次的success中</span></span><br><span class="line">          resFn(reaValue)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，我们就实现了链式操作，只要有返回值就可以一直then下去</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/28/自己动手封装一个Promise/" data-id="ckbyiie13000k6zg4ok7tqrkx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/24/排序算法/" class="article-date">
+  <time datetime="2019-09-24T13:08:22.000Z" itemprop="datePublished">2019-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/24/排序算法/">排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbling</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; arr.length - i; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j + <span class="number">1</span>] &amp;&amp; arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">				<span class="keyword">let</span> tmp = arr[j + <span class="number">1</span>]</span><br><span class="line">				arr[j + <span class="number">1</span>] = arr[j]</span><br><span class="line">				arr[j] = tmp</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bubbling([<span class="number">13</span>, <span class="number">523</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">536</span>, <span class="number">63</span>, <span class="number">74</span>, <span class="number">78</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>循环循环次数，内层循环对比，如果第一个元素大于第二个，就换位置，最后再将结果返回出来，很好理解，注意：j+1最后一次是没有的，所以应该不跳出（提高性能）</p>
+</blockquote>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">let</span> min = arr[i],</span><br><span class="line">			tmp,</span><br><span class="line">			minIndex</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j] &lt; min) &#123;</span><br><span class="line">				min = arr[j]</span><br><span class="line">				minIndex = j</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (minIndex) &#123;</span><br><span class="line">			tmp = arr[i]</span><br><span class="line">			arr[i] = min</span><br><span class="line">			arr[minIndex] = tmp</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">selectSort([<span class="number">13</span>, <span class="number">523</span>, <span class="number">5</span>, <span class="number">13</span>, <span class="number">536</span>, <span class="number">55</span>, <span class="number">536</span>, <span class="number">63</span>, <span class="number">74</span>, <span class="number">78</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>选择排序有点类似我们排队老师点名换位置，我需要拿一个数去和其他对比，一旦找到一个比他小的数就站在他旁边，条件就是，每找一次，就换下一个数。</p>
+</blockquote>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quicklySort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) <span class="keyword">return</span> arr</span><br><span class="line">	<span class="keyword">let</span> divide = arr[arr.length - <span class="number">1</span>],</span><br><span class="line">		left = arr.filter(<span class="function">(<span class="params">val, i</span>) =&gt;</span> val &lt;= divide &amp;&amp; i !== arr.length - <span class="number">1</span>),</span><br><span class="line">		right = arr.filter(<span class="function"><span class="params">val</span> =&gt;</span> val &gt; divide)</span><br><span class="line">	<span class="keyword">return</span> [...quicklySort(left), divide, ...quicklySort(right)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">quicklySort([<span class="number">13</span>, <span class="number">523</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">536</span>, <span class="number">63</span>, <span class="number">74</span>, <span class="number">78</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>首先快排的逻辑就是，分隔然后各自对比，空间逐渐缩小来实现，所以是比较占用内存的，但是速度很快，因为同时执行逻辑，利用到递归机制，递归条件，只要arr.length &gt;= 2就是满足递归。</p>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">		<span class="keyword">let</span> tmp,</span><br><span class="line">			j = i - <span class="number">1</span></span><br><span class="line">		<span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; arr[i]) &#123;</span><br><span class="line">			tmp = arr[i]</span><br><span class="line">			arr[i] = arr[j]</span><br><span class="line">			arr[j] = tmp</span><br><span class="line">			j--</span><br><span class="line">			i--</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">selectionSort([<span class="number">13</span>, <span class="number">523</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">536</span>, <span class="number">63</span>, <span class="number">74</span>, <span class="number">78</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有点类似取牌插牌，取一张扑克牌，插到相邻的位置</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/24/排序算法/" data-id="ckbyiie11000i6zg4a9isf9tx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue组件的使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/23/vue组件的使用/" class="article-date">
@@ -133,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/23/vue组件的使用/" data-id="ck4nqqg5j0009lcg4nutldhqe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/23/vue组件的使用/" data-id="ckbyiie0w000c6zg4v92lcnkj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
@@ -246,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/08/vscode的使用技巧/" data-id="ck4nqqg5h0005lcg4olyt5ds5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/08/vscode的使用技巧/" data-id="ckbyiie10000g6zg4y71nn6gu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
@@ -338,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/06/mpvue和stylus使用/" data-id="ck4nqqg5d0002lcg4ih1vmb0m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/06/mpvue和stylus使用/" data-id="ckbyiie0v000a6zg4j6sxblyz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -400,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/02/小程序实现二级联动/" data-id="ck4nqqg5k000alcg4lul20f4x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/02/小程序实现二级联动/" data-id="ckbyiie0z000e6zg4rddcp3wn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -449,7 +639,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
     </div>
   </div>
 
@@ -462,23 +652,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/28/element轮播的实现/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/Typescript/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/30/JavaSript中的函数/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/27/面向JavaScript高级/">理解对象</a>
           </li>
         
           <li>
             <a href="/2019/12/19/JavaScript重点/">JS基础知识点</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/09/Node-js笔记/">Node.js笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/08/mpvue使用Vuex/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/26/CSS实现图片自适应/">(no title)</a>
           </li>
         
       </ul>
@@ -493,7 +683,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 lemon<br>
+      &copy; 2020 lemon<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
